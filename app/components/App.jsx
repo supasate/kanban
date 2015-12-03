@@ -33,7 +33,12 @@ export default class App extends Component {
             </div>
         );
     }
-    addNote () {
-        console.log('add note');
+    addNote = () => {
+        this.setState({
+            notes: this.state.notes.concat([{
+                id: uuid.v4(),
+                task: 'New task'
+            }])
+        });
     }
 };
