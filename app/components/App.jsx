@@ -41,7 +41,26 @@ export default class App extends Component {
             }])
         });
     }
-    editNote (noteId, task) {
-        console.log('note edited', noteId, task);
+    editNote = (noteId, task) => {
+        const notes = this.state.notes;
+        const noteIndex = this.findNote(noteId);
+
+        if (noteIndex < 0) {
+            return;
+        }
+
+        notes[noteIndex].task = task;
+
+        this.setState({notes});
+    }
+    findNote = (id) => {
+        const notes = this.state.notes;
+        const noteIndex = notes.findIndex((note) => note.id === id);
+
+        if (noteIndex < 0) {
+            console.warn('Failed to find note', notes, id);
+        }
+
+        return noteIndex;
     }
 };
