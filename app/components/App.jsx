@@ -1,3 +1,4 @@
+import AltContainer from 'alt-container';
 import React, {Component} from 'react';
 import Notes from './Notes.jsx';
 import NoteActions from '../actions/NoteActions';
@@ -24,9 +25,14 @@ export default class App extends Component {
         return (
             <div>
                 <button className="add-note" onClick={this.addNote}>+</button>
-                <Notes items={notes}
-                    onEdit={this.editNote}
-                    onDelete={this.deleteNote} />
+                <AltContainer
+                    stores={[NoteStore]}
+                    inject={{
+                        items: () => NoteStore.getState().notes
+                    }}
+                >
+                    <Notes onEdit={this.editNote} onDelete={this.deleteNote} />
+                </AltContainer>
             </div>
         );
     }
