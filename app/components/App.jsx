@@ -33,7 +33,7 @@ export default class App extends Component {
     addNote = () => {
         NoteActions.create({task: 'New Task'});
     }
-    editNote = (noteId, task) => {
+    editNote = (id, task) => {
         NoteActions.update({id, task});
     }
     deleteNote = (id) => {
