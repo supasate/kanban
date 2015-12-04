@@ -29,7 +29,9 @@ export default class App extends Component {
         return (
             <div>
                 <button className="add-note" onClick={this.addNote}>+</button>
-                <Notes items={notes} onEdit={this.editNote} />
+                <Notes items={notes}
+                    onEdit={this.editNote}
+                    onDelete={this.deleteNote} />
             </div>
         );
     }
@@ -62,5 +64,16 @@ export default class App extends Component {
         }
 
         return noteIndex;
+    }
+    deleteNote = (id) => {
+        const notes = this.state.notes;
+        const noteIndex = notes.findIndex((note) => note.id === id);
+
+        if (noteIndex < 0) {
+            return;
+        }
+        this.setState({
+            notes: notes.slice(0,noteIndex).concat(notes.slice(noteIndex + 1))
+        });
     }
 };
