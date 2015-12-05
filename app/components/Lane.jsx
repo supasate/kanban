@@ -51,6 +51,10 @@ export default class Lane extends Component {
         NoteActions.delete(noteId);
     }
     editName (id, name) {
-        console.log('edited lane name', id, name);
+        if (name) {
+            LaneActions.update({id, name});
+        } else {
+            LaneActions.delete(id);
+        }
     }
 }
