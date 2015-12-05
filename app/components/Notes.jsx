@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import Editable from './Editable.jsx';
-import Note form './Note.jsx';
+import Note from './Note.jsx';
 
 export default class Notes extends Component {
     render () {
