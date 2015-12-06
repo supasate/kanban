@@ -70,6 +70,10 @@ if (TARGET === 'build') {
         },
         devtool: 'source-map',
         plugins: [
+            new webpack.optimize.CommonsChunkPlugin(
+                'vendor',
+                '[name].[chunkhash].js'
+            ),
             new webpack.DefinePlugin({
                 'process.env.NODE_ENV': JSON.stringify('production')
             }),
