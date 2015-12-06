@@ -2,6 +2,7 @@ var path = require('path');
 var HtmlwebpackPlugin = require('html-webpack-plugin');
 var webpack = require('webpack');
 var merge = require('webpack-merge');
+var pkg = require('./package.json');
 
 const TARGET = process.env.npm_lifecycle_event;
 const PATHS = {
@@ -59,6 +60,10 @@ if (TARGET === 'start' || !TARGET) {
 }
 if (TARGET === 'build') {
     module.exports = merge(common, {
+        entry: {
+            app: PATHS.app,
+            vendor: Object.keys(pkg.dependencies)
+        },
         output: {
             path: PATHS.build,
             filename: 'bundle.js'
