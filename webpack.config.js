@@ -3,6 +3,7 @@ var HtmlwebpackPlugin = require('html-webpack-plugin');
 var webpack = require('webpack');
 var merge = require('webpack-merge');
 var pkg = require('./package.json');
+var Clean = require('clean-webpack-plugin');
 
 const TARGET = process.env.npm_lifecycle_event;
 const PATHS = {
@@ -70,6 +71,7 @@ if (TARGET === 'build') {
         },
         devtool: 'source-map',
         plugins: [
+            new Clean(['build']),
             new webpack.optimize.CommonsChunkPlugin(
                 'vendor',
                 '[name].[chunkhash].js'
