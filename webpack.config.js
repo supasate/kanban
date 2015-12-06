@@ -63,6 +63,13 @@ if (TARGET === 'build') {
             path: PATHS.build,
             filename: 'bundle.js'
         },
-        devtool: 'source-map'
+        devtool: 'source-map',
+        plugins: [
+            new webpack.optimize.UglifyJsPlugin({
+                compress: {
+                    warnings: false
+                }
+            })
+        ]
     });
 }
