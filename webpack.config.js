@@ -66,7 +66,7 @@ if (TARGET === 'build') {
         },
         output: {
             path: PATHS.build,
-            filename: 'bundle.js'
+            filename: '[name].[chunkhash].js'
         },
         devtool: 'source-map',
         plugins: [
