@@ -1,6 +1,6 @@
 module.exports = function karmaConfig (config) {
     config.set({
-        framworks: [
+        frameworks: [
             'mocha'
         ],
         reporters: [
@@ -9,7 +9,7 @@ module.exports = function karmaConfig (config) {
         ],
         files: [
             'node_modules/phantomjs-polyfill/bind-polyfill.js',
-            'tests/**/*_test'
+            'tests/**/*_test.*'
         ],
         preprocessors: {
             'tests/**/*_test.*': ['webpack', 'sourcemap']
