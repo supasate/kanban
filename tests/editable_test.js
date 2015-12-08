@@ -55,6 +55,20 @@ describe('Editable', () => {
         Simulate.blur(input);
 
         assert.equal(triggered, true);
+    });
 
+    it('allows deletion', () => {
+        let deleted = false;
+        const onDelete = () => {
+            deleted = true;
+        });
+        const component = renderIntoDocument(
+            <Editable value={'value'} onDelete={onDelete} />
+        );
+
+        let deleteComponent = findRenderedDOMComponentWithClass(component, 'delete');
+        Simulate.click(deleteComponent);
+
+        assert.equal(deleted, true);
     });
 })
